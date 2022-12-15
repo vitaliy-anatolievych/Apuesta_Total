@@ -30,21 +30,36 @@ class ResultFragment : Fragment() {
         _binding = FragmentResultBinding.inflate(inflater, container, false)
         return binding.root.also {
             val isWin = arguments?.getBoolean(IS_WIN)!!
+            val level = arguments?.getParcelable<Level>(LEVEL)!!
+
             with(binding) {
                 when (isWin) {
                     true -> {
                         resultLogo.setImageDrawable(getImageDrawable(R.drawable.logo_win))
                         btnActionAfterGame.setImageDrawable(getImageDrawable(R.drawable.btn_next))
-//                        viewModel.saveProgress()
+                        val newLevelsList = viewModel.levelsData.value!!
+                        viewModel.levelsData.value!!.forEachIndexed { index, arrLevel ->
+                            if (arrLevel.levelName == level.levelName) {
+                                if (index != newLevelsList.size) {
+                                    val newLevel = newLevelsList.get(index + 1).copy(isLock = true)
+                                    newLevelsList.add(index, newLevel)
+                                }
+                            }
+                        }
+                        viewModel.saveProgress(newLevelsList)
+                        viewModel.getLevels()
+
                         btnActionAfterGame.setOnClickListener {
-//                            navigator()?.goToChooseDifficult()
+                            viewModel.levelsData.observe(viewLifecycleOwner) {
+                                navigator()?.goToChooseDifficult(it!!)
+                            }
                         }
                     }
                     false -> {
                         resultLogo.setImageDrawable(getImageDrawable(R.drawable.logo_loose))
                         btnActionAfterGame.setImageDrawable(getImageDrawable(R.drawable.btn_again))
                         btnActionAfterGame.setOnClickListener {
-                            navigator()?.goToMainScreen()
+                            navigator()?.goToGameScreen(level)
                         }
                     }
                 }
