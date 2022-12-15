@@ -2,6 +2,7 @@ package com.doriangrei.apueastawinapp.presentation.screens
 
 import android.graphics.drawable.Drawable
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,6 +15,9 @@ import com.doriangrei.apueastawinapp.presentation.contract.navigator
 import com.doriangrei.apueastawinapp.databinding.FragmentResultBinding
 import com.doriangrei.apueastawinapp.model.Level
 import com.doriangrei.apueastawinapp.presentation.viewmodel.MainViewModel
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class ResultFragment : Fragment() {
     private var _binding: FragmentResultBinding? = null
@@ -37,22 +41,22 @@ class ResultFragment : Fragment() {
                     true -> {
                         resultLogo.setImageDrawable(getImageDrawable(R.drawable.logo_win))
                         btnActionAfterGame.setImageDrawable(getImageDrawable(R.drawable.btn_next))
-                        val newLevelsList = viewModel.levelsData.value!!
-                        viewModel.levelsData.value!!.forEachIndexed { index, arrLevel ->
-                            if (arrLevel.levelName == level.levelName) {
-                                if (index != newLevelsList.size) {
-                                    val newLevel = newLevelsList.get(index + 1).copy(isLock = true)
-                                    newLevelsList.add(index, newLevel)
+
+                        val listLevels = viewModel.levelsData.value!!
+                        val newListLevel = ArrayList<Level>(listLevels)
+                        listLevels.forEachIndexed { index, listLevel ->
+                            if (level.levelName == listLevel.levelName) {
+                                if (index < listLevels.size) {
+                                    val unlockedLevel = listLevels[index + 1].copy(isLock = false)
+                                    newListLevel.removeAt(index + 1)
+                                    newListLevel.add(index + 1, unlockedLevel)
                                 }
                             }
                         }
-                        viewModel.saveProgress(newLevelsList)
-                        viewModel.getLevels()
+                        viewModel.saveProgress(newListLevel)
 
                         btnActionAfterGame.setOnClickListener {
-                            viewModel.levelsData.observe(viewLifecycleOwner) {
-                                navigator()?.goToChooseDifficult(it!!)
-                            }
+                            navigator()?.goToChooseDifficult(newListLevel)
                         }
                     }
                     false -> {
