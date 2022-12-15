@@ -5,13 +5,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.doriangrei.apueastawinapp.R
 import com.doriangrei.apueastawinapp.model.Level
 import com.doriangrei.apueastawinapp.presentation.util.LevelAdapter
+import com.doriangrei.apueastawinapp.presentation.viewmodel.MainViewModel
 
 class LevelFragment: Fragment() {
+
+    private val viewModel by activityViewModels<MainViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater,

@@ -2,6 +2,8 @@ package com.doriangrei.apueastawinapp.presentation
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
+import com.doriangrei.apueastawinapp.controller.LevelsSettings
 import com.doriangrei.apueastawinapp.presentation.contract.Navigator
 import com.doriangrei.apueastawinapp.databinding.ActivityMainBinding
 import com.doriangrei.apueastawinapp.model.Level
@@ -10,13 +12,16 @@ import com.doriangrei.apueastawinapp.presentation.screens.LevelFragment
 import com.doriangrei.apueastawinapp.presentation.screens.ResultFragment
 import com.doriangrei.apueastawinapp.presentation.screens.StartFragment
 import com.doriangrei.apueastawinapp.presentation.util.FragmentManager
+import com.doriangrei.apueastawinapp.presentation.viewmodel.MainViewModel
 
 class MainActivity : AppCompatActivity(), Navigator {
     private lateinit var binding: ActivityMainBinding
+    private lateinit var viewModel: MainViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater).also { setContentView(it.root) }
+        viewModel = ViewModelProvider(this)[MainViewModel::class.java]
 
         if (savedInstanceState == null) {
             goToChooseDifficult()
@@ -36,13 +41,7 @@ class MainActivity : AppCompatActivity(), Navigator {
     }
 
     override fun goToChooseDifficult() {
-        val listLevels = ArrayList<Level>()
-        listLevels.add(Level(1, 24,24,2,false))
-        listLevels.add(Level(2, 24,24,2,true))
-        listLevels.add(Level(3, 24,24,2,true))
-        listLevels.add(Level(4, 24,24,2,true))
-        listLevels.add(Level(5, 24,24,2,true))
-        listLevels.add(Level(6, 24,24,2,true))
+        val listLevels = LevelsSettings.getDefaultLevels()
         FragmentManager.launchFragment(this, LevelFragment.newInstance(listLevels))
     }
 }

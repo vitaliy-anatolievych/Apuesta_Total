@@ -23,7 +23,7 @@ object LevelsSettings {
                     steps = 24,
                     countForWin = 24,
                     planetTask = Color.BLACK,
-                    false
+                    true
                 )
             )
 
@@ -33,7 +33,7 @@ object LevelsSettings {
                     steps = 24,
                     countForWin = 30,
                     planetTask = Color.GREEN,
-                    false
+                    true
                 )
             )
 
@@ -43,7 +43,7 @@ object LevelsSettings {
                     steps = 24,
                     countForWin = 35,
                     planetTask = Color.YELLOW,
-                    false
+                    true
                 )
             )
 
@@ -53,7 +53,7 @@ object LevelsSettings {
                     steps = 30,
                     countForWin = 40,
                     planetTask = Color.BLUE,
-                    false
+                    true
                 )
             )
 
@@ -63,7 +63,7 @@ object LevelsSettings {
                     steps = 30,
                     countForWin = 42,
                     planetTask = Color.GREEN,
-                    false
+                    true
                 )
             )
 
@@ -73,7 +73,7 @@ object LevelsSettings {
                     steps = 35,
                     countForWin = 44,
                     planetTask = Color.BLACK,
-                    false
+                    true
                 )
             )
 
@@ -83,7 +83,7 @@ object LevelsSettings {
                     steps = 35,
                     countForWin = 56,
                     planetTask = Color.BLUE,
-                    false
+                    true
                 )
             )
 
@@ -93,7 +93,7 @@ object LevelsSettings {
                     steps = 37,
                     countForWin = 58,
                     planetTask = Color.YELLOW,
-                    false
+                    true
                 )
             )
 
@@ -103,7 +103,7 @@ object LevelsSettings {
                     steps = 40,
                     countForWin = 60,
                     planetTask = Color.BLUE,
-                    false
+                    true
                 )
             )
 
@@ -113,7 +113,7 @@ object LevelsSettings {
                     steps = 44,
                     countForWin = 65,
                     planetTask = Color.GREEN,
-                    false
+                    true
                 )
             )
 
@@ -123,7 +123,7 @@ object LevelsSettings {
                     steps = 45,
                     countForWin = 67,
                     planetTask = Color.YELLOW,
-                    false
+                    true
                 )
             )
 
@@ -133,7 +133,7 @@ object LevelsSettings {
                     steps = 49,
                     countForWin = 68,
                     planetTask = Color.BLACK,
-                    false
+                    true
                 )
             )
 
@@ -143,7 +143,7 @@ object LevelsSettings {
                     steps = 51,
                     countForWin = 71,
                     planetTask = Color.YELLOW,
-                    false
+                    true
                 )
             )
 
@@ -153,7 +153,7 @@ object LevelsSettings {
                     steps = 60,
                     countForWin = 73,
                     planetTask = Color.GREEN,
-                    false
+                    true
                 )
             )
 
@@ -163,7 +163,7 @@ object LevelsSettings {
                     steps = 63,
                     countForWin = 75,
                     planetTask = Color.BLACK,
-                    false
+                    true
                 )
             )
         }
