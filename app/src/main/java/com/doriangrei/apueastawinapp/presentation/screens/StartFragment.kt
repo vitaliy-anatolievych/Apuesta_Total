@@ -30,6 +30,7 @@ class StartFragment: Fragment() {
                         navigator()?.goToChooseDifficult(it)
                     } else {
                         val levels = LevelsSettings.getDefaultLevels()
+                        viewModel.saveProgress(levels)
                         navigator()?.goToChooseDifficult(levels)
                     }
                 }
