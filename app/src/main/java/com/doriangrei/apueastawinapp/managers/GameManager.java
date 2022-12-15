@@ -26,7 +26,7 @@ public class GameManager {
         LinearLayout tableLayout = binding.subLinear;
         TextView stepView = binding.StepsTextView;
         stepView.setText(String.valueOf(steps));
-        Board board = new Board(num_rows,num_col, activity, binding.rootGame, stepView, binding.CountView,new TextView[]{binding.QuestionTextView}, new ImageView[]{binding.QuestionImage}, Arrays.asList(CELL_LABELS[1]), Arrays.asList(24), "1");
+        Board board = new Board(num_rows,num_col, activity, binding.rootGame, stepView, binding.CountView,new TextView[]{binding.QuestionTextView}, new ImageView[]{binding.QuestionImage}, Arrays.asList(CELL_LABELS[1]), Arrays.asList(24));
         for (int i = 0; i < num_rows; i++) {
 
             TableRow tableRow = new TableRow(activity);

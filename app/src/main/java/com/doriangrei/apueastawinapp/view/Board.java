@@ -19,7 +19,6 @@ import java.util.List;
 import java.util.Random;
 
 public class Board {
-    private String MissionNumber;
     public TextView counting;
     public static final int CELL_EMPTY = 0;   // empty cell
     public static final int[] CELL_LABELS = {Color.GREEN, Color.YELLOW, Color.BLUE, Color.RED, Color.BLACK};
@@ -34,14 +33,13 @@ public class Board {
     private TextView[] Question;
 //    private CustomDialog dialog;
     // create an empty board
-    public Board(int numrows, int numcols, Activity c, ConstraintLayout layout, TextView stepsView, TextView counting, TextView[] Question, ImageView[] QuestionImage, List<Integer> Mission, List<Integer> missionCount, String MissionNumber) {
+    public Board(int numrows, int numcols, Activity c, ConstraintLayout layout, TextView stepsView, TextView counting, TextView[] Question, ImageView[] QuestionImage, List<Integer> Mission, List<Integer> missionCount) {
         this.counting = counting;
         this.stepsView = stepsView;
         this.numrows = numrows;
         this.numcols = numcols;
         this.c = c;
         this.layout = layout;
-        this.MissionNumber = MissionNumber;
         this.MissionCount = missionCount;
         this.Mission = Mission;
         this.Question = Question;
