@@ -5,6 +5,7 @@ import static java.lang.System.exit;
 
 import android.animation.ObjectAnimator;
 import android.app.Activity;
+import android.app.Fragment;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Handler;
@@ -14,6 +15,9 @@ import android.widget.TableRow;
 import android.widget.TextView;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
+
+import com.doriangrei.apueastawinapp.presentation.contract.GameResultListener;
+import com.doriangrei.apueastawinapp.presentation.contract.Navigator;
 
 import java.util.List;
 import java.util.Random;
@@ -31,9 +35,11 @@ public class Board {
     private List<Integer> Mission;
     private TextView stepsView;
     private TextView[] Question;
+    private GameResultListener resultListener;
 //    private CustomDialog dialog;
     // create an empty board
-    public Board(int numrows, int numcols, Activity c, ConstraintLayout layout, TextView stepsView, TextView counting, TextView[] Question, ImageView[] QuestionImage, List<Integer> Mission, List<Integer> missionCount) {
+    public Board(GameResultListener resultListener, int numrows, int numcols, Activity c, ConstraintLayout layout, TextView stepsView, TextView counting, TextView[] Question, ImageView[] QuestionImage, List<Integer> Mission, List<Integer> missionCount) {
+        this.resultListener = resultListener;
         this.counting = counting;
         this.stepsView = stepsView;
         this.numrows = numrows;
@@ -266,10 +272,9 @@ public class Board {
 
                         if (images != null) {
                             counting.setText(String.valueOf(Integer.parseInt((String) counting.getText())+3));
-//                            if(dialog == null && num != -1 && MissionCount.get(num) <= 0) {
-//                                dialog = new CustomDialog(c,String.valueOf(counting.getText()),MissionNumber,true);
-//                                dialog.show();
-//                            }
+                            if(num != -1 && MissionCount.get(num) <= 0) {
+                                resultListener.resultGame(true);
+                            }
                             images[i][j].setVisibility(View.INVISIBLE);
                             images[i][j - 1].setVisibility(View.INVISIBLE);
                             images[i][j + 1].setVisibility(View.INVISIBLE);
@@ -287,10 +292,9 @@ public class Board {
                             handler.postDelayed(() -> {
                                 //dropPieces();
                                 handler.postDelayed(this::eliminateMatches,10);
-//                                if(dialog == null && !this.existsEmptyCell() && Integer.parseInt(String.valueOf(stepsView.getText())) <= 0) {
-//                                    dialog = new CustomDialog(c, (String) counting.getText(),String.valueOf(MissionNumber),false);
-//                                    dialog.show();
-//                                }
+                                if(!this.existsEmptyCell() && Integer.parseInt(String.valueOf(stepsView.getText())) <= 0) {
+                                    resultListener.resultGame(false);
+                                }
                             }, 520);
                             return;
                         }
@@ -316,10 +320,9 @@ public class Board {
                         board[i + 1][j] = CELL_EMPTY;
                         if (images != null) {
                             counting.setText(String.valueOf(Integer.parseInt((String) counting.getText())+3));
-//                            if(dialog == null && num != -1 && MissionCount.get(num) <= 0) {
-//                                dialog = new CustomDialog(c,String.valueOf(counting.getText()),MissionNumber,true);
-//                                dialog.show();
-//                            }
+                            if(num != -1 && MissionCount.get(num) <= 0) {
+                                resultListener.resultGame(true);
+                            }
                             images[i - 1][j].setVisibility(View.INVISIBLE);
                             images[i][j].setVisibility(View.INVISIBLE);
                             images[i + 1][j].setVisibility(View.INVISIBLE);
@@ -334,10 +337,9 @@ public class Board {
                             handler.postDelayed(() -> {
                                 //dropPieces();
                                 handler.postDelayed(this::eliminateMatches,10);
-//                                if(dialog == null && !this.existsEmptyCell() && Integer.parseInt(String.valueOf(stepsView.getText())) <= 0) {
-//                                    dialog = new CustomDialog(c, (String) counting.getText(),String.valueOf(MissionNumber),false);
-//                                    dialog.show();
-//                                }
+                                if(!this.existsEmptyCell() && Integer.parseInt(String.valueOf(stepsView.getText())) <= 0) {
+                                    resultListener.resultGame(false);
+                                }
                             }, 520);
                             return;
                         }

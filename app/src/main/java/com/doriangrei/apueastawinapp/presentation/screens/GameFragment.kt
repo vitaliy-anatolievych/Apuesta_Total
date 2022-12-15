@@ -8,9 +8,11 @@ import androidx.fragment.app.Fragment
 import com.doriangrei.apueastawinapp.databinding.FragmentGameBinding
 import com.doriangrei.apueastawinapp.controller.GameManager
 import com.doriangrei.apueastawinapp.model.Level
+import com.doriangrei.apueastawinapp.presentation.contract.GameResultListener
+import com.doriangrei.apueastawinapp.presentation.contract.navigator
 import kotlin.properties.Delegates
 
-class GameFragment: Fragment() {
+class GameFragment: Fragment(), GameResultListener {
 
     private var _binding: FragmentGameBinding? = null
     private val binding: FragmentGameBinding
@@ -31,7 +33,7 @@ class GameFragment: Fragment() {
 
         if (savedInstanceState == null) {
             activity?. let {
-                GameManager.initGame(level, numberRows, numberColumn, binding, it)
+                GameManager.initGame(this, level, numberRows, numberColumn, binding, it)
             }
         }
         return binding.root
@@ -45,6 +47,12 @@ class GameFragment: Fragment() {
             arguments = Bundle().apply {
                 this.putParcelable(LEVEL, level)
             }
+        }
+    }
+
+    override fun resultGame(isPlayerWin: Boolean) {
+        activity?.let {
+            navigator()?.goToScoreScreen(isPlayerWin, level)
         }
     }
 }
