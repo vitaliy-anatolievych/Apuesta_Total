@@ -14,6 +14,7 @@ import android.widget.TableRow;
 import android.widget.TextView;
 
 import com.doriangrei.apueastawinapp.databinding.FragmentGameBinding;
+import com.doriangrei.apueastawinapp.model.Level;
 import com.doriangrei.apueastawinapp.presentation.view.Board;
 
 import java.util.Arrays;
@@ -21,11 +22,11 @@ import java.util.Arrays;
 public class GameManager {
 
     @SuppressLint("ClickableViewAccessibility")
-    public static void initGame(int steps, Integer num_rows, Integer num_col, FragmentGameBinding binding, Activity activity) {
+    public static void initGame(Level level, Integer num_rows, Integer num_col, FragmentGameBinding binding, Activity activity) {
         LinearLayout tableLayout = binding.subLinear;
         TextView stepView = binding.StepsTextView;
-        stepView.setText(String.valueOf(steps));
-        Board board = new Board(num_rows,num_col, activity, binding.rootGame, stepView, binding.CountView,new TextView[]{binding.QuestionTextView}, new ImageView[]{binding.QuestionImage}, Arrays.asList(CELL_LABELS[1]), Arrays.asList(24));
+        stepView.setText(String.valueOf(level.component2()));
+        Board board = new Board(num_rows,num_col, activity, binding.rootGame, stepView, binding.CountView,new TextView[]{binding.QuestionTextView}, new ImageView[]{binding.QuestionImage}, Arrays.asList(CELL_LABELS[level.component4()]), Arrays.asList(level.component3()));
         for (int i = 0; i < num_rows; i++) {
 
             TableRow tableRow = new TableRow(activity);

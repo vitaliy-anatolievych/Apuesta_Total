@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.doriangrei.apueastawinapp.databinding.FragmentGameBinding
 import com.doriangrei.apueastawinapp.controller.GameManager
+import com.doriangrei.apueastawinapp.model.Level
 import kotlin.properties.Delegates
 
 class GameFragment: Fragment() {
@@ -15,7 +16,7 @@ class GameFragment: Fragment() {
     private val binding: FragmentGameBinding
         get() = _binding ?: throw NullPointerException("FragmentGameBinding is null")
 
-    private var steps by Delegates.notNull<Int>()
+    private lateinit var level: Level
 
     private val numberRows = 9
     private val numberColumn = 9
@@ -26,22 +27,23 @@ class GameFragment: Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentGameBinding.inflate(inflater, container, false)
-        steps = arguments?.getInt(STEPS, 0)!!
+        level = arguments?.getParcelable(LEVEL)!!
+
         if (savedInstanceState == null) {
             activity?. let {
-                GameManager.initGame(steps, numberRows, numberColumn, binding, it)
+                GameManager.initGame(level, numberRows, numberColumn, binding, it)
             }
         }
         return binding.root
     }
 
     companion object {
-        private const val STEPS = "steps"
+        private const val LEVEL = "level"
 
         @JvmStatic
-        fun newInstance(steps: Int) = GameFragment().apply {
+        fun newInstance(level: Level) = GameFragment().apply {
             arguments = Bundle().apply {
-                this.putInt(STEPS, steps)
+                this.putParcelable(LEVEL, level)
             }
         }
     }

@@ -8,14 +8,18 @@ import android.view.ViewGroup
 import androidx.annotation.DrawableRes
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import com.doriangrei.apueastawinapp.R
 import com.doriangrei.apueastawinapp.presentation.contract.navigator
 import com.doriangrei.apueastawinapp.databinding.FragmentResultBinding
+import com.doriangrei.apueastawinapp.presentation.viewmodel.MainViewModel
 
 class ResultFragment : Fragment() {
     private var _binding: FragmentResultBinding? = null
     private val binding: FragmentResultBinding
         get() = _binding ?: throw NullPointerException("FragmentResultBinding is null")
+
+    private val viewModel by activityViewModels<MainViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -30,8 +34,9 @@ class ResultFragment : Fragment() {
                     true -> {
                         resultLogo.setImageDrawable(getImageDrawable(R.drawable.logo_win))
                         btnActionAfterGame.setImageDrawable(getImageDrawable(R.drawable.btn_next))
+//                        viewModel.saveProgress()
                         btnActionAfterGame.setOnClickListener {
-                            navigator()?.goToChooseDifficult()
+//                            navigator()?.goToChooseDifficult()
                         }
                     }
                     false -> {

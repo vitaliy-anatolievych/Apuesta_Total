@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity(), Navigator {
         viewModel = ViewModelProvider(this)[MainViewModel::class.java]
 
         if (savedInstanceState == null) {
-            goToChooseDifficult()
+            goToMainScreen()
         }
     }
 
@@ -32,24 +32,15 @@ class MainActivity : AppCompatActivity(), Navigator {
         FragmentManager.launchFragment(this, StartFragment.newInstance())
     }
 
-    override fun goToGameScreen(steps: Int) {
-        FragmentManager.launchFragment(this, GameFragment.newInstance(steps))
+    override fun goToGameScreen(level: Level) {
+        FragmentManager.launchFragment(this, GameFragment.newInstance(level))
     }
 
-    override fun goToScoreScreen(isWin: Boolean) {
+    override fun goToScoreScreen(isWin: Boolean, level: Level) {
         FragmentManager.launchFragment(this, ResultFragment.newInstance(isWin))
     }
 
-    override fun goToChooseDifficult() {
-        viewModel.getLevels()
-
-        viewModel.levelsData.observe(this) {
-            if (it != null) {
-                FragmentManager.launchFragment(this, LevelFragment.newInstance(it))
-            } else {
-                val levels = LevelsSettings.getDefaultLevels()
-                FragmentManager.launchFragment(this, LevelFragment.newInstance(levels))
-            }
-        }
+    override fun goToChooseDifficult(levels: ArrayList<Level>) {
+        FragmentManager.launchFragment(this, LevelFragment.newInstance(levels))
     }
 }
