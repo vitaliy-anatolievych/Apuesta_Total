@@ -12,6 +12,7 @@ import androidx.fragment.app.activityViewModels
 import com.doriangrei.apueastawinapp.R
 import com.doriangrei.apueastawinapp.presentation.contract.navigator
 import com.doriangrei.apueastawinapp.databinding.FragmentResultBinding
+import com.doriangrei.apueastawinapp.model.Level
 import com.doriangrei.apueastawinapp.presentation.viewmodel.MainViewModel
 
 class ResultFragment : Fragment() {
@@ -62,11 +63,13 @@ class ResultFragment : Fragment() {
 
     companion object {
         private const val IS_WIN = "is_win"
+        private const val LEVEL = "level"
 
         @JvmStatic
-        fun newInstance(isWin: Boolean) = ResultFragment().apply {
+        fun newInstance(isWin: Boolean, level: Level) = ResultFragment().apply {
             arguments = Bundle().apply {
                 putBoolean(IS_WIN, isWin)
+                putParcelable(LEVEL, level)
             }
         }
     }

@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity(), Navigator {
     }
 
     override fun goToScoreScreen(isWin: Boolean, level: Level) {
-        FragmentManager.launchFragment(this, ResultFragment.newInstance(isWin))
+        FragmentManager.launchFragment(this, ResultFragment.newInstance(isWin, level))
     }
 
     override fun goToChooseDifficult(levels: ArrayList<Level>) {
