@@ -16,9 +16,8 @@ class MainActivity : AppCompatActivity(), Navigator {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater).also { setContentView(it.root) }
 
-        supportFragmentManager.beginTransaction().apply {
-            replace(R.id.main_container, GameFragment.newInstance(24), GameFragment::class.simpleName)
-            commit()
+        if (savedInstanceState == null) {
+            goToMainScreen()
         }
     }
 

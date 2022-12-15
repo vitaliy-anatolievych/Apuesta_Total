@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.ImageButton
 import androidx.fragment.app.Fragment
 import com.doriangrei.apueastawinapp.R
+import com.doriangrei.apueastawinapp.contract.navigator
 
 class StartFragment: Fragment() {
 
@@ -17,7 +18,7 @@ class StartFragment: Fragment() {
     ): View? {
         return inflater.inflate(R.layout.fragment_start, container, false).apply {
             this.findViewById<ImageButton>(R.id.btn_start).setOnClickListener {
-                // todo go to game
+                navigator()?.goToGameScreen(24)
             }
         }
     }
