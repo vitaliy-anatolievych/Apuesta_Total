@@ -9,7 +9,7 @@ import java.lang.reflect.Type
 
 class LocalStorageController(private val preferences: SharedPreferences) {
 
-    fun getUser(): ArrayList<Level>? {
+    fun getLevels(): ArrayList<Level>? {
         val json = preferences.getString(USER_PROFILE, null)
 
         return if (json != null) {
@@ -28,5 +28,6 @@ class LocalStorageController(private val preferences: SharedPreferences) {
 
     companion object {
         private const val USER_PROFILE = "user_profile"
+        const val MAIN_STORAGE = "main_storage"
     }
 }
