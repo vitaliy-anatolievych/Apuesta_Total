@@ -16,8 +16,8 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     private val storageController = LocalStorageController(prefs)
 
-    private val _levelsData = MutableLiveData<ArrayList<Level>>()
-    val levelsData: LiveData<ArrayList<Level>>
+    private val _levelsData = MutableLiveData<ArrayList<Level>?>()
+    val levelsData: LiveData<ArrayList<Level>?>
         get() = _levelsData
 
     fun getLevels() {

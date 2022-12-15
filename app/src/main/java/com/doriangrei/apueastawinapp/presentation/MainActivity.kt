@@ -41,7 +41,15 @@ class MainActivity : AppCompatActivity(), Navigator {
     }
 
     override fun goToChooseDifficult() {
-        val listLevels = LevelsSettings.getDefaultLevels()
-        FragmentManager.launchFragment(this, LevelFragment.newInstance(listLevels))
+        viewModel.getLevels()
+
+        viewModel.levelsData.observe(this) {
+            if (it != null) {
+                FragmentManager.launchFragment(this, LevelFragment.newInstance(it))
+            } else {
+                val levels = LevelsSettings.getDefaultLevels()
+                FragmentManager.launchFragment(this, LevelFragment.newInstance(levels))
+            }
+        }
     }
 }
