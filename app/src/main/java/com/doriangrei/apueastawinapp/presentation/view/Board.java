@@ -5,7 +5,6 @@ import static java.lang.System.exit;
 
 import android.animation.ObjectAnimator;
 import android.app.Activity;
-import android.app.Fragment;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Handler;
@@ -17,7 +16,6 @@ import android.widget.TextView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.doriangrei.apueastawinapp.presentation.contract.GameResultListener;
-import com.doriangrei.apueastawinapp.presentation.contract.Navigator;
 
 import java.util.List;
 import java.util.Random;
