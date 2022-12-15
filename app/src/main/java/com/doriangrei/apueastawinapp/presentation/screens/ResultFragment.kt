@@ -1,4 +1,4 @@
-package com.doriangrei.apueastawinapp.screens
+package com.doriangrei.apueastawinapp.presentation.screens
 
 import android.graphics.drawable.Drawable
 import android.os.Bundle
@@ -9,7 +9,7 @@ import androidx.annotation.DrawableRes
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import com.doriangrei.apueastawinapp.R
-import com.doriangrei.apueastawinapp.contract.navigator
+import com.doriangrei.apueastawinapp.presentation.contract.navigator
 import com.doriangrei.apueastawinapp.databinding.FragmentResultBinding
 
 class ResultFragment : Fragment() {

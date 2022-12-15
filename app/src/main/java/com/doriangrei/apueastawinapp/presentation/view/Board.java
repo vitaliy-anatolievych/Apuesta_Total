@@ -1,6 +1,6 @@
-package com.doriangrei.apueastawinapp.view;
+package com.doriangrei.apueastawinapp.presentation.view;
 
-import static com.doriangrei.apueastawinapp.util.Tools.getImage;
+import static com.doriangrei.apueastawinapp.presentation.util.Tools.getImage;
 import static java.lang.System.exit;
 
 import android.animation.ObjectAnimator;

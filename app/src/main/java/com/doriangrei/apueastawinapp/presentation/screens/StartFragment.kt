@@ -1,4 +1,4 @@
-package com.doriangrei.apueastawinapp.screens
+package com.doriangrei.apueastawinapp.presentation.screens
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.ImageButton
 import androidx.fragment.app.Fragment
 import com.doriangrei.apueastawinapp.R
-import com.doriangrei.apueastawinapp.contract.navigator
+import com.doriangrei.apueastawinapp.presentation.contract.navigator
 
 class StartFragment: Fragment() {
 

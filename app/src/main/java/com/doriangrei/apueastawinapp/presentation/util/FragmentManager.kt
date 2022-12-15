@@ -1,9 +1,9 @@
-package com.doriangrei.apueastawinapp.util
+package com.doriangrei.apueastawinapp.presentation.util
 
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.doriangrei.apueastawinapp.R
-import com.doriangrei.apueastawinapp.screens.StartFragment
+import com.doriangrei.apueastawinapp.presentation.screens.StartFragment
 
 object FragmentManager {
 

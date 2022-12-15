@@ -1,6 +1,6 @@
-package com.doriangrei.apueastawinapp.managers;
+package com.doriangrei.apueastawinapp.controller;
 
-import static com.doriangrei.apueastawinapp.view.Board.*;
+import static com.doriangrei.apueastawinapp.presentation.view.Board.CELL_LABELS;
 
 import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
@@ -13,9 +13,8 @@ import android.widget.LinearLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
-import com.doriangrei.apueastawinapp.controller.OnSwipeListener;
 import com.doriangrei.apueastawinapp.databinding.FragmentGameBinding;
-import com.doriangrei.apueastawinapp.view.Board;
+import com.doriangrei.apueastawinapp.presentation.view.Board;
 
 import java.util.Arrays;
 

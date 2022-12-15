@@ -1,4 +1,4 @@
-package com.doriangrei.apueastawinapp.contract
+package com.doriangrei.apueastawinapp.presentation.contract
 
 import androidx.fragment.app.Fragment
 

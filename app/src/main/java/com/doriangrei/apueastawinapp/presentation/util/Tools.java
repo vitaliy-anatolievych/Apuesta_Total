@@ -1,4 +1,4 @@
-package com.doriangrei.apueastawinapp.util;
+package com.doriangrei.apueastawinapp.presentation.util;
 
 import android.graphics.Color;
 

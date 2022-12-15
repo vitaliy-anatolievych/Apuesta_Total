@@ -1,4 +1,4 @@
-package com.doriangrei.apueastawinapp.util
+package com.doriangrei.apueastawinapp.presentation.util
 
 import android.view.View
 import android.view.ViewGroup
@@ -13,6 +13,7 @@ class LevelAdapter: RecyclerView.Adapter<LevelAdapter.ViewHolder>() {
     }
 
     override fun getItemViewType(position: Int): Int {
+        val levelItem =
         return super.getItemViewType(position)
     }
 

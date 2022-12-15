@@ -1,13 +1,13 @@
-package com.doriangrei.apueastawinapp
+package com.doriangrei.apueastawinapp.presentation
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.doriangrei.apueastawinapp.contract.Navigator
+import com.doriangrei.apueastawinapp.presentation.contract.Navigator
 import com.doriangrei.apueastawinapp.databinding.ActivityMainBinding
-import com.doriangrei.apueastawinapp.screens.GameFragment
-import com.doriangrei.apueastawinapp.screens.ResultFragment
-import com.doriangrei.apueastawinapp.screens.StartFragment
-import com.doriangrei.apueastawinapp.util.FragmentManager
+import com.doriangrei.apueastawinapp.presentation.screens.GameFragment
+import com.doriangrei.apueastawinapp.presentation.screens.ResultFragment
+import com.doriangrei.apueastawinapp.presentation.screens.StartFragment
+import com.doriangrei.apueastawinapp.presentation.util.FragmentManager
 
 class MainActivity : AppCompatActivity(), Navigator {
     private lateinit var binding: ActivityMainBinding

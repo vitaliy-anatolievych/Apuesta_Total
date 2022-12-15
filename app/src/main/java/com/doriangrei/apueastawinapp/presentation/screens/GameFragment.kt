@@ -1,4 +1,4 @@
-package com.doriangrei.apueastawinapp.screens
+package com.doriangrei.apueastawinapp.presentation.screens
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.doriangrei.apueastawinapp.databinding.FragmentGameBinding
-import com.doriangrei.apueastawinapp.managers.GameManager
+import com.doriangrei.apueastawinapp.controller.GameManager
 import kotlin.properties.Delegates
 
 class GameFragment: Fragment() {
