@@ -13,6 +13,6 @@ public class Tools {
             case Color.YELLOW: return R.drawable.ball_yellow;
             case Color.BLACK: return R.drawable.ball_brown;
         }
-        return R.drawable.ball_brown;
+        return R.drawable.ball_moon;
     }
 }

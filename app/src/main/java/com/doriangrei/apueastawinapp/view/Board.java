@@ -2,6 +2,7 @@ package com.doriangrei.apueastawinapp.view;
 
 import static com.doriangrei.apueastawinapp.util.Tools.getImage;
 import static java.lang.System.exit;
+
 import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.content.Context;
@@ -17,8 +18,6 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import java.util.List;
 import java.util.Random;
 
-// class Board
-// underlying game engine for Match3
 public class Board {
     private String MissionNumber;
     public TextView counting;
@@ -84,9 +83,9 @@ public class Board {
                 }
                 board[i][j] = randColor;
                 ImageView imageView = new ImageView(c.getBaseContext());
-                imageView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
-                imageView.setLayoutParams(new TableRow.LayoutParams(0, TableRow.LayoutParams.MATCH_PARENT,120.0f));
-                //imageView.
+                imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+                imageView.setLayoutParams(new TableRow.LayoutParams(103, 103));
+//                //imageView.
                 imageView.setImageResource(getImage(randColor));
 
                 imageView.setBackgroundColor(Color.TRANSPARENT);
@@ -179,7 +178,6 @@ public class Board {
         animation.setDuration(100);
         animation.start();
         Handler handler = new Handler();
-       // board[(int) k][j] = color;
         handler.postDelayed(() -> {
             board[(int) k][j] = color;
             images[(int) k][j].setImageResource(getImage(color));
@@ -223,7 +221,6 @@ public class Board {
         animation.setDuration(100);
         animation.start();
         Handler handler = new Handler();
-        //board[(int) k][j] = board[i][j];
         handler.postDelayed(() -> {
             animation.setDuration(0);
             images[i][j].setVisibility(View.INVISIBLE);
@@ -232,14 +229,13 @@ public class Board {
             images[(int)(i + k)][j].setImageResource(getImage(board[i][j]));
             images[(int)(i + k)][j].setVisibility(View.VISIBLE);
 
-        }, 500);
+        }, 100);
     }
     public void AnimatedWidthDown(int i, int j) {
         ObjectAnimator animation = ObjectAnimator.ofFloat(images[i][j], "translationY", (float) (images[0][0].getMeasuredHeight()));
         animation.setDuration(100);
         animation.start();
         Handler handler = new Handler();
-        //board[i+1][j] = board[i][j];
         handler.postDelayed(() -> {
             animation.setDuration(0);
             animation.reverse();
@@ -248,7 +244,7 @@ public class Board {
             images[i+1][j].setImageResource(getImage(board[i][j]));
             images[i+1][j].setVisibility(View.VISIBLE);
 
-        }, 500);
+        }, 100);
     }
 
     // eliminate any 3 consecutive matching pieces
@@ -351,17 +347,6 @@ public class Board {
                 }
             }
         }
-       /* Board toyboard = new Board(this);
-
-        toyboard.eliminateMatches();
-
-        if(!toyboard.existsEmptyCell() && Integer.parseInt(String.valueOf(stepsView.getText())) <= 0) {
-            dialog = new CustomDialog(c, (String) counting.getText(),String.valueOf(MissionNumber),false);
-            dialog.show();
-        }*/
-
-
-
     }
 
 
@@ -401,10 +386,6 @@ public class Board {
         images[row1][col1].setImageResource(getImage(board[row1][col1]));
         images[row2][col2].setImageResource(getImage(board[row2][col2]));
         eliminateMatches();
-
-//        do {
-//           eliminateMatches();
-//        } while (existsEmptyCell());
     }
 
     public ImageView[][] getImages() {
